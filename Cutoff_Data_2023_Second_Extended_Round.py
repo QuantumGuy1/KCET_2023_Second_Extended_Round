@@ -58,4 +58,4 @@ st.dataframe(filtered_df.style.set_properties(**{'width': '200px'}))
 
 # Display the PDF with a reduced height
 st.write("### Official PDF Document")
-display_pdf_from_url("https://raw.githubusercontent.com/QuantumGuy1/Kcet-streamlit-application/main/Second%20Extended%20Round.pdf", height=400)
+display_pdf_from_url("https://drive.google.com/uc?export=download&id=1PA5H-skcnlZdLKkvmu0tEAtNAaHJfre6", height=400)
