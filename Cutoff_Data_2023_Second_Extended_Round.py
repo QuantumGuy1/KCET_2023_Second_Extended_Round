@@ -57,4 +57,4 @@ st.dataframe(filtered_df.style.set_properties(**{'width': '200px'}))
 
 # Display the PDF with a reduced height
 st.write("### Official PDF Document")
-display_pdf(r"E:\Kcet-streamlit-application\Second Extended Round.pdf", height=400)
+display_pdf("Second Extended Round.pdf", height=400)
