@@ -17,7 +17,7 @@ conn.close()
 st.set_page_config(page_title='Engineering Cutoff Ranks 2023-KCET-Second Extended Round', layout='wide')
 
 st.title('Engineering Cutoff Ranks 2023-KCET-Second Extended Round')
-st.write("This Information is up-to-date as per KIA's official Website's PDF")
+st.write("This Information is up-to-date as per KEA's official Website's PDF")
 st.write('This app displays the cutoff ranks for various branches in different colleges.')
 
 # Add a side note
