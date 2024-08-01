@@ -2,11 +2,12 @@ import streamlit as st
 import pandas as pd
 import sqlite3
 import base64
+import requests
 
-# Function to display PDF
-def display_pdf(file_path, height=600):
-    with open(file_path, "rb") as f:
-        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+# Function to display PDF from a URL
+def display_pdf_from_url(url, height=600):
+    response = requests.get(url)
+    base64_pdf = base64.b64encode(response.content).decode('utf-8')
     pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="{height}" type="application/pdf"></iframe>'
     st.markdown(pdf_display, unsafe_allow_html=True)
 
@@ -32,7 +33,7 @@ st.sidebar.write("Rank -> 0 indicates that there was no seat allocated to that b
 
 # Add the PDF link to the sidebar
 st.sidebar.write("### Official PDF Document")
-st.sidebar.markdown('View the official PDF document online, attached')
+st.sidebar.markdown('View the official PDF document online')
 
 # Set the column width to be wider
 st.dataframe(df.style.set_properties(**{'width': '200px'}))
