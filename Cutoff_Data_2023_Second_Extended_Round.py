@@ -1,15 +1,6 @@
 import streamlit as st
 import pandas as pd
 import sqlite3
-import base64
-import requests
-
-# Function to display PDF from a URL
-def display_pdf_from_url(url, height=600):
-    response = requests.get(url)
-    base64_pdf = base64.b64encode(response.content).decode('utf-8')
-    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="{height}" type="application/pdf"></iframe>'
-    st.markdown(pdf_display, unsafe_allow_html=True)
 
 # Connect to SQLite database
 conn = sqlite3.connect('engineering_cutoff.db')
@@ -23,8 +14,10 @@ df = pd.read_sql_query(query, conn)
 conn.close()
 
 # Streamlit app
+st.set_page_config(page_title='Engineering Cutoff Ranks 2023-KCET-Second Extended Round', layout='wide')
+
 st.title('Engineering Cutoff Ranks 2023-KCET-Second Extended Round')
-st.write("This Information is upto-date as per KIA's official Website's PDF")
+st.write("This Information is up-to-date as per KIA's official Website's PDF")
 st.write('This app displays the cutoff ranks for various branches in different colleges.')
 
 # Add a side note
@@ -33,7 +26,8 @@ st.sidebar.write("Rank -> 0 indicates that there was no seat allocated to that b
 
 # Add the PDF link to the sidebar
 st.sidebar.write("### Official PDF Document")
-st.sidebar.markdown('View the official PDF document online')
+pdf_url = "https://cetonline.karnataka.gov.in/keawebentry456/cet2023/ENR2_CUTGENenglish.pdf"
+st.sidebar.markdown(f'[View the official PDF document online]({pdf_url})')
 
 # Set the column width to be wider
 st.dataframe(df.style.set_properties(**{'width': '200px'}))
@@ -55,7 +49,3 @@ branch = st.selectbox('Select Branch', college_df['branch'].unique())
 filtered_df = college_df[college_df['branch'] == branch]
 st.write(f'Cutoff ranks for {branch} in {college}')
 st.dataframe(filtered_df.style.set_properties(**{'width': '200px'}))
-
-# Display the PDF with a reduced height
-st.write("### Official PDF Document")
-display_pdf_from_url("https://drive.google.com/uc?export=download&id=1PA5H-skcnlZdLKkvmu0tEAtNAaHJfre6", height=400)
