@@ -50,3 +50,5 @@ branch = st.selectbox('Select Branch', college_df['branch'].unique())
 filtered_df = college_df[college_df['branch'] == branch]
 st.write(f'Cutoff ranks for {branch} in {college}')
 st.dataframe(filtered_df.style.set_properties(**{'width': '200px'}))
+
+print("End")
