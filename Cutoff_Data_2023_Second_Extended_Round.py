@@ -28,12 +28,13 @@ st.sidebar.write("Rank -> 0 indicates that there was no seat allocated to that b
 st.sidebar.write("### Official PDF Document")
 st.sidebar.write("Click on the link below to download/view the official PDF from the KEA website")
 pdf_url = "https://cetonline.karnataka.gov.in/keawebentry456/cet2023/ENR2_CUTGENenglish.pdf"
-st.sidebar.markdown(f'[View the official PDF document online]({pdf_url})')
+st.sidebar.markdown(f'View the official PDF document online')
 
 # Set the column width to be wider
 st.dataframe(df.style.set_properties(**{'width': '200px'}))
 
 # Filter by college
+st.markdown("<h2 style='font-size:24px;'>Select College</h2>", unsafe_allow_html=True)
 college = st.selectbox('Select College', df['college_name'].unique())
 
 # Filter the dataframe by selected college
@@ -44,6 +45,7 @@ st.write(f'Cutoff ranks for all branches in {college}')
 st.dataframe(college_df.style.set_properties(**{'width': '200px'}))
 
 # Filter by branch within the selected college
+st.markdown("<h2 style='font-size:24px;'>Select Branch</h2>", unsafe_allow_html=True)
 branch = st.selectbox('Select Branch', college_df['branch'].unique())
 
 # Display the filtered data for the selected branch within the selected college
