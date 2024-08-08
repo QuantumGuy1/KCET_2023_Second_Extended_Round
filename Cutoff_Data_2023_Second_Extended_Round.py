@@ -28,7 +28,7 @@ st.sidebar.write("Rank -> 0 indicates that there was no seat allocated to that b
 st.sidebar.write("### Official PDF Document")
 st.sidebar.write("Click on the link below to download/view the official PDF from the KEA website")
 pdf_url = "https://cetonline.karnataka.gov.in/keawebentry456/cet2023/ENR2_CUTGENenglish.pdf"
-st.sidebar.markdown(f'View the official PDF document online')
+st.sidebar.markdown(f'[View the official PDF document online]({pdf_url})')
 
 # Set the column width to be wider
 st.dataframe(df.style.set_properties(**{'width': '200px'}))
