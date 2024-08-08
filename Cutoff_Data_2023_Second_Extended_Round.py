@@ -34,8 +34,8 @@ st.sidebar.markdown(f'View the official PDF document online')
 st.dataframe(df.style.set_properties(**{'width': '200px'}))
 
 # Filter by college
-st.markdown("<h2 style='font-size:24px;'>Select College</h2>", unsafe_allow_html=True)
-college = st.selectbox('Select College', df['college_name'].unique())
+st.markdown("<h2 style='font-size:28px;'>View your desired college</h2>", unsafe_allow_html=True)
+college = st.selectbox('List of Colleges', df['college_name'].unique())
 
 # Filter the dataframe by selected college
 college_df = df[df['college_name'] == college]
@@ -45,8 +45,8 @@ st.write(f'Cutoff ranks for all branches in {college}')
 st.dataframe(college_df.style.set_properties(**{'width': '200px'}))
 
 # Filter by branch within the selected college
-st.markdown("<h2 style='font-size:24px;'>Select Branch</h2>", unsafe_allow_html=True)
-branch = st.selectbox('Select Branch', college_df['branch'].unique())
+st.markdown("<h2 style='font-size:28px;'>View your desired branch</h2>", unsafe_allow_html=True)
+branch = st.selectbox('List of Branches', college_df['branch'].unique())
 
 # Display the filtered data for the selected branch within the selected college
 filtered_df = college_df[college_df['branch'] == branch]
